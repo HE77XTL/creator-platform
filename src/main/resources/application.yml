@@ -1,0 +1,15 @@
+server:
+  port: 8090
+spring:
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/creator
+    username: root
+    password: 123456
+  #配置Mapper.xml映射文件
+mybatis:
+  mapper-locations: classpath:mapping/*.xml
+  type-aliases-package: com.heds.creatorplatform.entity
+
