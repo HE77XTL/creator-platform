@@ -13,4 +13,7 @@ public class UserService {
     public User QueryById(int id) {
         return userMapper.QueryById(id);
     }
+    public Boolean Registry(User user) {
+        return userMapper.Registry(user);
+    }
 }

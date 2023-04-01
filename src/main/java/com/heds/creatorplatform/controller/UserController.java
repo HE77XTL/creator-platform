@@ -3,9 +3,9 @@ package com.heds.creatorplatform.controller;
 import com.heds.creatorplatform.entity.User;
 import com.heds.creatorplatform.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.rmi.registry.Registry;
 
 @RestController
 public class UserController {
@@ -20,6 +20,22 @@ public class UserController {
         } else {
             return String.format("User(id: %s) not found", id);
         }
+    }
+    @CrossOrigin(origins = "*")
+    @GetMapping("/xxx")
+    public String GetTest(){
+        return "1111";
+    }
+
+    @CrossOrigin(origins = "*")
+    @PostMapping("/registry")
+    public Boolean Registry(@RequestBody User user){
+        Boolean registryResult = userService.Registry(user);
+        return registryResult;
+    }
+
+    public String Login() {
+        return "";
     }
 
 }

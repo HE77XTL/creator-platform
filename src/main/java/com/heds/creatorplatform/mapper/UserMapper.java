@@ -8,4 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserMapper {
     User QueryById(int id);
+    Boolean Registry(User user);
 }
+
+

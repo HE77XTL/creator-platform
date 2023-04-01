@@ -1,17 +1,9 @@
 package com.heds.creatorplatform.entity;
 
 public class User {
-    private Integer id;
+    private Integer roleId;
     private String name;
-    private String passwd;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    private String password;
 
     public String getName() {
         return name;
@@ -21,20 +13,36 @@ public class User {
         this.name = name;
     }
 
-    public String getPasswd() {
-        return passwd;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPasswd(String passwd) {
-        this.passwd = passwd;
+    public void setPassword(String password) {
+        this.password = password;
     }
+
+    public User(Integer roleId, String name, String password){
+        this.roleId = roleId;
+        this.name = name;
+        this.password = password;
+    }
+
+
 
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                "roleId=" + roleId +
                 ", name='" + name + '\'' +
-                ", passwd='" + passwd + '\'' +
+                ", password='" + password + '\'' +
                 '}';
+    }
+
+    public Integer getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
     }
 }
