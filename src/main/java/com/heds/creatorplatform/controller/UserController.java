@@ -13,7 +13,7 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping("/user/{id}")
-    public String GetUser(@PathVariable int id){
+    public String GetUser(@PathVariable int id) {
         User user = userService.QueryById(id);
         if (user != null) {
             return user.toString();
@@ -21,21 +21,28 @@ public class UserController {
             return String.format("User(id: %s) not found", id);
         }
     }
+
     @CrossOrigin(origins = "*")
     @GetMapping("/xxx")
-    public String GetTest(){
+    public String GetTest() {
         return "1111";
     }
 
     @CrossOrigin(origins = "*")
     @PostMapping("/registry")
-    public Boolean Registry(@RequestBody User user){
+    public Boolean Registry(@RequestBody User user) {
         Boolean registryResult = userService.Registry(user);
         return registryResult;
     }
 
-    public String Login() {
-        return "";
+    @CrossOrigin(origins = "*")
+    @PostMapping("/login")
+    public Boolean Login(@RequestBody User user) {
+        User loginResult = userService.QueryByName(user.getName());
+        if (loginResult != null) {
+            return loginResult.getPassword().equals(user.getPassword());
+        }
+        return false;
     }
 
 }
