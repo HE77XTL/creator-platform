@@ -2,6 +2,8 @@ package com.heds.creatorplatform.controller;
 
 import com.heds.creatorplatform.entity.User;
 import com.heds.creatorplatform.service.UserService;
+import com.heds.creatorplatform.utils.JwtUtil;
+import io.jsonwebtoken.Jwt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,6 +42,10 @@ public class UserController {
     public Boolean Login(@RequestBody User user) {
         User loginResult = userService.QueryByName(user.getName());
         if (loginResult != null) {
+//            String token = JwtUtil.getJwtToken(loginResult.getPassword(), loginResult.getName());
+//            System.out.println(token);
+            String token = JwtUtil.generateToken(user.getName());
+            System.out.println(token);
             return loginResult.getPassword().equals(user.getPassword());
         }
         return false;
